@@ -26,6 +26,8 @@ function doMath(){
         data: expression,
     }).then((response) => {
         console.log('server has responded', response);
+        $('#answer').text(response.answer)
+        $('#history').text(JSON.stringify(response.expressionsRan, null, 2))
       }).catch((error) => {
         console.log('fix it dummy', error);
       })
