@@ -6,7 +6,7 @@ const PORT = 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const expressions = [];
+const expressionsRan = [];
 
 
 app.use(express.static('./server/public'));
@@ -18,9 +18,22 @@ app.use(express.static('./server/public'));
 
 app.post('/result', (req, res) => {
     console.log('in route for /result', req.body);
-    expressions.push(req.body);
+    expressionsRan.push(req.body);
+    //req.body is the same as the "data" object in the ajax call
     res.send(200);
 });
+
+ const doMath = (firstNum, operator, secondNum) => {
+      if (operator === "add") {
+        return Number(firstNum) + Number(secondNum)
+      }
+      
+ }
+
+
+
+
+
 
 app.listen(PORT, function(){
     console.log('server is up');
