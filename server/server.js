@@ -11,12 +11,19 @@ const expressionsRan = [];
 
 app.use(express.static('./server/public'));
 
+// app.get('/result', (req, res) => {
+//     console.log('in get route for calculator result');
+//     res.send();
+// });
 
 app.post('/result', (req, res) => {
     console.log('in route for /result', req.body);
-    expressionsRan.push(req.body);
+
+  
     //req.body is the same as the "data" object in the ajax call
     const answer = doMath (req.body.firstNum, req.body.operator, req.body.secondNum);
+    console.log('answer', answer)
+    expressionsRan.push({firstNum:req.body.firstNum, operator:req.body.operator, secondNum:req.body.secondNum, answer: answer});
     res.json({
         answer: answer,
     expressionsRan: expressionsRan});
@@ -31,7 +38,7 @@ const doMath = (firstNum, operator, secondNum) => {
     }
     if (operator === "multiply") {
         return Number(firstNum) * Number(secondNum)
-        //multiply not working
+        //multiply
     }
     if (operator === "divide") {
         return Number(firstNum) / Number(secondNum)
