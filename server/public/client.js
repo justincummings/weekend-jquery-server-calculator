@@ -8,8 +8,8 @@ $('#add').on('click', handleOperator)
 $('#subtract').on('click', handleOperator)
 $('#multipy').on('click', handleOperator)
 $('#divide').on('click', handleOperator)
+$('#clear').on('click', clearInputs)
 }
-//add click handlers for all operator button presses
 
 function doMath(){
     console.log('in doMath');
@@ -34,13 +34,19 @@ function doMath(){
 }
 
 function handleOperator (event) {
-    console.log(event.target.id)
-    operator = event.target.id
+    console.log(event.target.id);
+    operator = event.target.id;
     // if () {
 // if event.target.id is equal to "whateverid" of the button,
 // set operator 
     // }
 };
+
+function clearInputs () {
+    console.log("clearInputs clicked");
+    $('#firstNum').val('');
+    $('#secondNum').val('');    
+}
 
 
 
